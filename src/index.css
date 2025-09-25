@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mode configuration */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  .dark {
+    color-scheme: dark;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-800 dark:bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-600 dark:bg-slate-600;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-500 dark:bg-slate-500;
+}
+
+/* Selection colors */
+::selection {
+  @apply bg-purple-500 text-white;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  @apply outline-2 outline-purple-500;
+  outline-offset: 2px;
+}
+
+/* Light mode scrollbar overrides */
+@media (prefers-color-scheme: light) {
+  html:not(.dark) ::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+  
+  html:not(.dark) ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400;
+  }
+  
+  html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
