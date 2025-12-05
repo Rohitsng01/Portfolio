@@ -7,7 +7,6 @@ import {
   ExternalLink,
   Code,
   Palette,
-  Smartphone,
   Database,
   Globe,
   User,
@@ -25,6 +24,8 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     // Check for saved theme preference or default to dark mode
@@ -79,42 +80,78 @@ function App() {
 
   const downloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/src/Resume.pdf';
-     link.download = 'RohitKumarCV.pdf';
+    link.href = '/Resume.pdf';
+    link.download = 'RohitKumarCV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('sending');
+
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 3000);
+      return;
+    }
+
+    try {
+      // Simulate sending (replace with actual email service like EmailJS, Formspree, etc.)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // For now, just open email client as fallback
+      const mailtoLink = `mailto:rohitkumarsng01@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(formData.email)}`;
+      window.location.href = mailtoLink;
+      
+      setFormStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setFormStatus('idle'), 5000);
+    } catch (error) {
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 3000);
+    }
+  };
+  
   const skills = [
     { name: 'React', level: 80, icon: <Code className="w-5 h-5" /> },
     { name: 'Java-Script', level: 80, icon: <Code className="w-5 h-5" /> },
-    { name: 'Mongo-DB', level: 85, icon: <Palette className="w-5 h-5" /> },
-    { name: 'Node Js', level: 80, icon: <Smartphone className="w-5 h-5" /> },
-    { name: 'Express.Js', level: 78, icon: <Database className="w-5 h-5" /> },
-    { name: 'Tailwindcss', level: 70, icon: <Globe className="w-5 h-5" /> }
+    { name: 'Mongo-DB', level: 85, icon: <Database className="w-5 h-5" /> },
+    { name: 'Node Js', level: 80, icon: <Globe className="w-5 h-5" /> },
+    { name: 'Express.Js', level: 78, icon: <Globe className="w-5 h-5" /> },
+    { name: 'Tailwindcss', level: 70, icon: <Palette className="w-5 h-5" /> }
   ];
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include real-time inventory, advanced search, and mobile-optimized checkout.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      link: '#'
+      title: 'Portfolio Website',
+      description: 'Personal portfolio website built with React, TypeScript, and Tailwind CSS. Features dark/light mode, smooth animations, responsive design, and interactive sections.',
+      image: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      link: 'https://github.com/Rohitsng01/Portfolio',
+      liveLink: '#'
     },
     {
-      title: 'AI Analytics Dashboard',
-      description: 'Modern analytics dashboard with AI-powered insights, real-time data visualization, and predictive analytics for business intelligence.',
-      image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Next.js', 'TypeScript', 'D3.js', 'Python'],
-      link: '#'
+      title: 'Full-Stack Web Application',
+      description: 'Modern full-stack application with authentication, real-time data updates, and RESTful API. Built with MERN stack showcasing end-to-end development skills.',
+      image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['React', 'Node.js', 'MongoDB', 'Express'],
+      link: 'https://github.com/Rohitsng01',
+      liveLink: '#'
     },
     {
-      title: 'Social Media App',
-      description: 'Cross-platform social media application with real-time messaging, content sharing, and advanced privacy controls built with React Native.',
-      image: 'https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React Native', 'Firebase', 'Redux', 'WebRTC'],
-      link: '#'
+      title: 'Responsive Landing Page',
+      description: 'Clean and modern landing page design with smooth scroll effects, mobile-first approach, and optimized performance. Perfect showcase of UI/UX design skills.',
+      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['HTML', 'CSS', 'JavaScript', 'Tailwind'],
+      link: 'https://github.com/Rohitsng01',
+      liveLink: '#'
     }
   ];
 
@@ -327,7 +364,7 @@ function App() {
               </p>
               <p className={`leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'
                 }`}>
-                When I'm not coding, I explore new design trends, contribute to open-source projects, and mentor aspiring developers. I am passionate about clean code, innovative design, and leveraging technology to solve real-world problems**.
+                When I'm not coding, I explore new design trends, contribute to open-source projects, and mentor aspiring developers. I am passionate about clean code, innovative design, and leveraging technology to solve real-world problems.
               </p>
               <div className="flex space-x-4">
                 <a href="https://github.com/Rohitsng01" className={`p-3 rounded-lg transition-colors ${isDarkMode
@@ -479,7 +516,7 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <div
                 key={project.title}
                 className={`group relative overflow-hidden rounded-xl backdrop-blur-sm border transition-all duration-300 ${isDarkMode
@@ -518,15 +555,34 @@ function App() {
                       </span>
                     ))}
                   </div>
-                  <a
-                    href={project.link}
-                    className={`inline-flex items-center font-medium group-hover:underline ${isDarkMode
-                      ? 'text-pink-400 hover:text-pink-300'
-                      : 'text-pink-600 hover:text-pink-500'
+                  <div className="flex gap-3">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center font-medium hover:underline ${isDarkMode
+                        ? 'text-pink-400 hover:text-pink-300'
+                        : 'text-pink-600 hover:text-pink-500'
                       }`}
-                  >
-                    View Project <ExternalLink className="ml-1 w-4 h-4" />
-                  </a>
+                    >
+                      <Github className="mr-1 w-4 h-4" />
+                      Code
+                    </a>
+                    {project.liveLink && project.liveLink !== '#' && (
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center font-medium hover:underline ${isDarkMode
+                          ? 'text-pink-400 hover:text-pink-300'
+                          : 'text-pink-600 hover:text-pink-500'
+                        }`}
+                      >
+                        <ExternalLink className="mr-1 w-4 h-4" />
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -606,7 +662,7 @@ function App() {
                 </div>
               </div>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'
                     }`}>
@@ -615,6 +671,9 @@ function App() {
                   <input
                     type="text"
                     id="name"
+                    value={formData.name}
+                    onChange={handleFormChange}
+                    required
                     className={`w-full px-4 py-3 border rounded-lg focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors ${isDarkMode
                       ? 'bg-slate-800/50 border-white/10 text-white placeholder-gray-400'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
@@ -630,6 +689,9 @@ function App() {
                   <input
                     type="email"
                     id="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    required
                     className={`w-full px-4 py-3 border rounded-lg focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors ${isDarkMode
                       ? 'bg-slate-800/50 border-white/10 text-white placeholder-gray-400'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
@@ -645,6 +707,9 @@ function App() {
                   <textarea
                     id="message"
                     rows={5}
+                    value={formData.message}
+                    onChange={handleFormChange}
+                    required
                     className={`w-full px-4 py-3 border rounded-lg focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors resize-none ${isDarkMode
                       ? 'bg-slate-800/50 border-white/10 text-white placeholder-gray-400'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
@@ -652,14 +717,28 @@ function App() {
                     placeholder="Tell me about your project..."
                   />
                 </div>
+                {formStatus === 'success' && (
+                  <div className="p-4 rounded-lg bg-green-500/20 border border-green-500/50 text-green-400 text-sm">
+                    Message sent successfully! I'll get back to you soon.
+                  </div>
+                )}
+                {formStatus === 'error' && (
+                  <div className="p-4 rounded-lg bg-red-500/20 border border-red-500/50 text-red-400 text-sm">
+                    Please fill out all fields.
+                  </div>
+                )}
                 <button
                   type="submit"
-                  className={`w-full px-8 py-4 rounded-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center space-x-2 text-white ${isDarkMode
-                    ? 'bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700'
-                    : 'bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600'
-                    }`}
+                  disabled={formStatus === 'sending'}
+                  className={`w-full px-8 py-4 rounded-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center space-x-2 text-white ${
+                    formStatus === 'sending' 
+                      ? 'bg-gray-500 cursor-not-allowed' 
+                      : isDarkMode
+                        ? 'bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700'
+                        : 'bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600'
+                  }`}
                 >
-                  <span>Send Message</span>
+                  <span>{formStatus === 'sending' ? 'Sending...' : 'Send Message'}</span>
                   <Send className="w-4 h-4" />
                 </button>
               </form>
