@@ -146,12 +146,12 @@ function App() {
       liveLink: 'https://chat-bot-five-gules.vercel.app/'
     },
     {
-      title: 'Portfolio Website',
-      description: 'Personal portfolio website built with React, TypeScript, and Tailwind CSS. Features dark/light mode, smooth animations, responsive design, and interactive sections.',
-      image: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-      link: 'https://github.com/Rohitsng01/Portfolio',
-      liveLink: '#'
+      title: 'Music Player Application',
+      description: 'Feature-rich music player with sleek design, playlist management, audio controls, and responsive interface. Offers seamless music streaming experience with modern UI.',
+      image: 'https://images.pexels.com/photos/164821/pexels-photo-164821.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['React', 'JavaScript', 'CSS', 'Vercel'],
+      link: 'https://github.com/Rohitsng01',
+      liveLink: 'https://music-player-lilac-ten.vercel.app/'
     }
   ];
 
