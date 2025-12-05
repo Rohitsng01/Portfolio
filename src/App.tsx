@@ -130,6 +130,14 @@ function App() {
 
   const projects = [
     {
+      title: 'Bar Management System',
+      description: 'Interactive bar and restaurant management application with modern UI, menu display, ordering system, and responsive design. Built with React and deployed on Vercel.',
+      image: 'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['React', 'JavaScript', 'CSS', 'Vercel'],
+      link: 'https://github.com/Rohitsng01',
+      liveLink: 'https://bar-mocha.vercel.app/'
+    },
+    {
       title: 'Portfolio Website',
       description: 'Personal portfolio website built with React, TypeScript, and Tailwind CSS. Features dark/light mode, smooth animations, responsive design, and interactive sections.',
       image: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -142,14 +150,6 @@ function App() {
       description: 'Modern full-stack application with authentication, real-time data updates, and RESTful API. Built with MERN stack showcasing end-to-end development skills.',
       image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800',
       tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-      link: 'https://github.com/Rohitsng01',
-      liveLink: '#'
-    },
-    {
-      title: 'Responsive Landing Page',
-      description: 'Clean and modern landing page design with smooth scroll effects, mobile-first approach, and optimized performance. Perfect showcase of UI/UX design skills.',
-      image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['HTML', 'CSS', 'JavaScript', 'Tailwind'],
       link: 'https://github.com/Rohitsng01',
       liveLink: '#'
     }
