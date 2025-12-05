@@ -138,19 +138,19 @@ function App() {
       liveLink: 'https://bar-mocha.vercel.app/'
     },
     {
+      title: 'AI Chatbot Application',
+      description: 'Intelligent chatbot application with real-time conversations, modern UI/UX design, and responsive interface. Features interactive messaging and smooth user experience.',
+      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['React', 'JavaScript', 'API', 'Vercel'],
+      link: 'https://github.com/Rohitsng01',
+      liveLink: 'https://chat-bot-five-gules.vercel.app/'
+    },
+    {
       title: 'Portfolio Website',
       description: 'Personal portfolio website built with React, TypeScript, and Tailwind CSS. Features dark/light mode, smooth animations, responsive design, and interactive sections.',
       image: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=800',
       tech: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
       link: 'https://github.com/Rohitsng01/Portfolio',
-      liveLink: '#'
-    },
-    {
-      title: 'Full-Stack Web Application',
-      description: 'Modern full-stack application with authentication, real-time data updates, and RESTful API. Built with MERN stack showcasing end-to-end development skills.',
-      image: 'https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-      link: 'https://github.com/Rohitsng01',
       liveLink: '#'
     }
   ];
