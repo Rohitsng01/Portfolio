@@ -18,7 +18,8 @@ import {
   Moon,
   Download,
   GraduationCap,
-  Award
+  Award,
+  Phone
 } from 'lucide-react';
 
 function App() {
@@ -807,6 +808,19 @@ function App() {
                 </p>
 
                 <div className="space-y-4">
+                  <a href="tel:+917543936835" className="flex items-center space-x-4 group">
+                    <div className={`p-3 rounded-lg transition-colors group-hover:bg-orange-200 ${isDarkMode
+                      ? 'bg-orange-600/20 group-hover:bg-orange-600/40'
+                      : 'bg-orange-100 group-hover:bg-orange-200'
+                      }`}>
+                      <Phone className={`w-5 h-5 ${isDarkMode ? 'text-orange-400' : 'text-orange-600'
+                        }`} />
+                    </div>
+                    <span className={`group-hover:underline cursor-pointer ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                      +91 7543936835
+                    </span>
+                  </a>
+
                   <a href="mailto:rohitkumarsng01@gmail.com" className="flex items-center space-x-4 group">
                     <div className={`p-3 rounded-lg transition-colors group-hover:bg-orange-200 ${isDarkMode
                       ? 'bg-orange-600/20 group-hover:bg-orange-600/40'
