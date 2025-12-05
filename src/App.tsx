@@ -16,7 +16,9 @@ import {
   X,
   Sun,
   Moon,
-  Download
+  Download,
+  GraduationCap,
+  Award
 } from 'lucide-react';
 
 function App() {
@@ -491,6 +493,189 @@ function App() {
                   }`}>{skill.level}% Proficiency</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education & Certifications Section */}
+      <section id="education" className={`py-20 ${isDarkMode ? 'bg-slate-800/30' : 'bg-gray-50/50'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className={`bg-gradient-to-r ${isDarkMode
+                ? 'from-green-400 to-blue-400'
+                : 'from-green-600 to-blue-600'
+                } bg-clip-text text-transparent`}>
+                Education & Certifications
+              </span>
+            </h2>
+            <p className={`text-lg max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Academic background and professional certifications
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Education */}
+            <div className={`p-8 rounded-xl backdrop-blur-sm border transition-all duration-300 ${isDarkMode
+              ? 'bg-gradient-to-br from-slate-800/50 to-slate-700/50 border-white/10 hover:border-green-500/50'
+              : 'bg-gradient-to-br from-white/50 to-gray-50/50 border-gray-200 hover:border-green-400/50'
+            }`}>
+              <div className="flex items-center mb-6">
+                <div className={`p-3 rounded-lg mr-4 ${isDarkMode ? 'bg-green-600/20' : 'bg-green-100'}`}>
+                  <GraduationCap className={`w-8 h-8 ${isDarkMode ? 'text-green-400' : 'text-green-600'}`} />
+                </div>
+                <h3 className="text-2xl font-bold">Education</h3>
+              </div>
+              
+              <div className="space-y-6">
+                <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-slate-700/30' : 'bg-white/50'}`}>
+                  <h4 className="font-semibold text-lg mb-1">Master of Computer Applications (MCA)</h4>
+                  <p className={`text-sm mb-1 ${isDarkMode ? 'text-green-400' : 'text-green-600'}`}>
+                    Galgotias University
+                  </p>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Specialization: Artificial Intelligence & Machine Learning
+                  </p>
+                  <p className={`text-xs mt-2 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+                    Currently Pursuing
+                  </p>
+                </div>
+
+                <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-slate-700/30' : 'bg-white/50'}`}>
+                  <h4 className="font-semibold text-lg mb-1">Bachelor of Commerce (B.Com)</h4>
+                  <p className={`text-sm mb-1 ${isDarkMode ? 'text-green-400' : 'text-green-600'}`}>
+                    Sainik Degree College
+                  </p>
+                  <p className={`text-xs mt-2 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+                    Completed
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className={`p-8 rounded-xl backdrop-blur-sm border transition-all duration-300 ${isDarkMode
+              ? 'bg-gradient-to-br from-slate-800/50 to-slate-700/50 border-white/10 hover:border-blue-500/50'
+              : 'bg-gradient-to-br from-white/50 to-gray-50/50 border-gray-200 hover:border-blue-400/50'
+            }`}>
+              <div className="flex items-center mb-6">
+                <div className={`p-3 rounded-lg mr-4 ${isDarkMode ? 'bg-blue-600/20' : 'bg-blue-100'}`}>
+                  <Award className={`w-8 h-8 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                </div>
+                <h3 className="text-2xl font-bold">Certifications</h3>
+              </div>
+              
+              <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-transparent">
+                <a 
+                  href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/pmnMSL4QiQ9JCgE3W/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_E9zRp6GWW5Gw8TE5y_1741622222475_completion_certificate.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`block p-4 rounded-lg border-l-4 transition-all hover:scale-[1.02] cursor-pointer ${isDarkMode 
+                    ? 'bg-slate-700/30 border-blue-500 hover:bg-slate-700/50' 
+                    : 'bg-white/50 border-blue-400 hover:bg-white/70'
+                  }`}
+                >
+                  <h4 className="font-semibold mb-1">AWS APAC - Solutions Architecture Job Simulation</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Forage • Issued Mar 2025
+                  </p>
+                  <p className={`text-xs mt-1 font-medium ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                    Credential ID: b6FRjBjBXEh7LPjKR
+                  </p>
+                </a>
+
+                <a 
+                  href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/MBA4MnZTNFEoJZGnk/NPdeQ43o8P9HJmJzg_MBA4MnZTNFEoJZGnk_E9zRp6GWW5Gw8TE5y_1738901852221_completion_certificate.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`block p-4 rounded-lg border-l-4 transition-all hover:scale-[1.02] cursor-pointer ${isDarkMode 
+                    ? 'bg-slate-700/30 border-blue-500 hover:bg-slate-700/50' 
+                    : 'bg-white/50 border-blue-400 hover:bg-white/70'
+                  }`}
+                >
+                  <h4 className="font-semibold mb-1">Goldman Sachs - Software Engineering Job Simulation</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Forage • Issued Feb 2025
+                  </p>
+                  <p className={`text-xs mt-1 font-medium ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                    Credential ID: BvJzop9LEycGhYBy7
+                  </p>
+                </a>
+
+                <div className={`p-4 rounded-lg border-l-4 ${isDarkMode 
+                  ? 'bg-slate-700/30 border-blue-500' 
+                  : 'bg-white/50 border-blue-400'
+                }`}>
+                  <h4 className="font-semibold mb-1">Internship - Ypsilon IT Solution UI Development</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    YPSILON IT SOLUTIONS • Issued Jan 2024
+                  </p>
+                  <p className={`text-xs mt-1 font-medium ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                    Credential ID: YPS/202401/6860
+                  </p>
+                </div>
+
+                <div className={`p-4 rounded-lg border-l-4 ${isDarkMode 
+                  ? 'bg-slate-700/30 border-blue-500' 
+                  : 'bg-white/50 border-blue-400'
+                }`}>
+                  <h4 className="font-semibold mb-1">Frontend UI with React.js Certificate</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Universal Informatics • Issued Oct 2023
+                  </p>
+                </div>
+
+                <div className={`p-4 rounded-lg border-l-4 ${isDarkMode 
+                  ? 'bg-slate-700/30 border-blue-500' 
+                  : 'bg-white/50 border-blue-400'
+                }`}>
+                  <h4 className="font-semibold mb-1">Mastering of JavaScript Fundamentals</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Geekster • Issued May 2024
+                  </p>
+                </div>
+
+                <div className={`p-4 rounded-lg border-l-4 ${isDarkMode 
+                  ? 'bg-slate-700/30 border-blue-500' 
+                  : 'bg-white/50 border-blue-400'
+                }`}>
+                  <h4 className="font-semibold mb-1">Fundamentals of Responsible Generative AI</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Microsoft Certified • Issued May 2024
+                  </p>
+                </div>
+
+                <a 
+                  href="https://learn.microsoft.com/en-us/users/rohitkumar-4621/achievements/hrz4jpd8" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`block p-4 rounded-lg border-l-4 transition-all hover:scale-[1.02] cursor-pointer ${isDarkMode 
+                    ? 'bg-slate-700/30 border-blue-500 hover:bg-slate-700/50' 
+                    : 'bg-white/50 border-blue-400 hover:bg-white/70'
+                  }`}
+                >
+                  <h4 className="font-semibold mb-1">Introduction to Prompt Engineering with GitHub Copilot</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Microsoft Certified • Issued May 2024
+                  </p>
+                </a>
+
+                <a 
+                  href="https://learn.microsoft.com/en-us/users/rohitkumar-4621/achievements/aeklcfk7" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`block p-4 rounded-lg border-l-4 transition-all hover:scale-[1.02] cursor-pointer ${isDarkMode 
+                    ? 'bg-slate-700/30 border-blue-500 hover:bg-slate-700/50' 
+                    : 'bg-white/50 border-blue-400 hover:bg-white/70'
+                  }`}
+                >
+                  <h4 className="font-semibold mb-1">Introduction of GitHub Copilot</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Microsoft Certified • Issued May 2024
+                  </p>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
