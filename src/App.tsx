@@ -53,7 +53,7 @@ function App() {
       setIsScrolled(window.scrollY > 50);
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'education', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -106,16 +106,31 @@ function App() {
     }
 
     try {
-      // Simulate sending (replace with actual email service like EmailJS, Formspree, etc.)
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // For now, just open email client as fallback
-      const mailtoLink = `mailto:rohitkumarsng01@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(formData.email)}`;
-      window.location.href = mailtoLink;
-      
-      setFormStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setFormStatus('idle'), 5000);
+      // Using Web3Forms to send email directly to your inbox
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '83a39a42-0aa6-4294-9160-df351ae2f702',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Contact from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setFormStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        setFormStatus('error');
+        setTimeout(() => setFormStatus('idle'), 3000);
+      }
     } catch (error) {
       setFormStatus('error');
       setTimeout(() => setFormStatus('idle'), 3000);
@@ -182,7 +197,7 @@ function App() {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-center space-x-4">
-                {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+                {['Home', 'About', 'Skills', 'Projects', 'Education', 'Contact'].map((item) => (
                   <button
                     key={item}
                     onClick={() => scrollToSection(item.toLowerCase())}
@@ -225,8 +240,18 @@ function App() {
               </div>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
+            {/* Mobile menu button and theme toggle */}
+            <div className="md:hidden flex items-center space-x-2">
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-md transition-colors ${isDarkMode
+                  ? 'text-gray-400 hover:text-white hover:bg-gray-700'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                aria-label="Toggle theme"
+              >
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className={`p-2 rounded-md transition-colors ${isDarkMode
@@ -247,7 +272,7 @@ function App() {
             : 'bg-white/95'
             }`}>
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+              {['Home', 'About', 'Skills', 'Projects', 'Education', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
@@ -260,21 +285,11 @@ function App() {
                 </button>
               ))}
 
-              {/* Mobile Theme Toggle and Resume */}
-              <div className="flex space-x-2 px-3 py-2">
-                <button
-                  onClick={toggleTheme}
-                  className={`p-2 rounded-full transition-colors duration-200 focus:outline-none border-0 ${isDarkMode
-                    ? 'text-gray-300 hover:text-white hover:bg-gray-700'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
-                  aria-label="Toggle theme"
-                >
-                  {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                </button>
+              {/* Mobile Resume Download */}
+              <div className="px-3 py-2">
                 <button
                   onClick={downloadResume}
-                  className={`flex-1 p-2 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2 ${isDarkMode
+                  className={`w-full p-2 rounded-lg font-medium transition-colors flex items-center justify-center space-x-2 ${isDarkMode
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
                     : 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
                     }`}
