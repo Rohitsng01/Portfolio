@@ -148,6 +148,14 @@ function App() {
 
   const projects = [
     {
+      title: 'AI Assistant Application',
+      description: 'Advanced AI assistant powered by cutting-edge technology, featuring intelligent conversations, real-time responses, and modern interface. Built with React and AI APIs for seamless user interaction.',
+      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['React', 'AI/ML', 'API', 'Vercel'],
+      link: 'https://github.com/Rohitsng01',
+      liveLink: 'https://ai-assistant-lovat-omega.vercel.app/'
+    },
+    {
       title: 'Bar Management System',
       description: 'Interactive bar and restaurant management application with modern UI, menu display, ordering system, and responsive design. Built with React and deployed on Vercel.',
       image: 'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -158,7 +166,7 @@ function App() {
     {
       title: 'AI Chatbot Application',
       description: 'Intelligent chatbot application with real-time conversations, modern UI/UX design, and responsive interface. Features interactive messaging and smooth user experience.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://d1y41eupgbwbb2.cloudfront.net/images/blog/top-ai-chatbot-development-companies.webp',
       tech: ['React', 'JavaScript', 'API', 'Vercel'],
       link: 'https://github.com/Rohitsng01',
       liveLink: 'https://chat-bot-five-gules.vercel.app/'
@@ -716,62 +724,51 @@ function App() {
 
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <div
-                key={project.title}
-                className={`group relative overflow-hidden rounded-xl backdrop-blur-sm border transition-all duration-300 ${isDarkMode
-                  ? 'bg-gradient-to-br from-slate-800/50 to-slate-700/50 border-white/10 hover:border-pink-500/50'
-                  : 'bg-gradient-to-br from-white/50 to-gray-50/50 border-gray-200 hover:border-pink-400/50'
-                  }`}
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className={`font-semibold text-xl mb-2 transition-colors ${isDarkMode
-                    ? 'group-hover:text-pink-400'
-                    : 'group-hover:text-pink-600'
-                    }`}>
-                    {project.title}
-                  </h3>
-                  <p className={`text-sm mb-4 leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}>
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${isDarkMode
-                          ? 'bg-pink-600/20 text-pink-300'
-                          : 'bg-pink-100 text-pink-700'
-                          }`}
-                      >
-                        {tech}
-                      </span>
-                    ))}
+          {/* Horizontal Scrollable Projects Container */}
+          <div className="relative">
+            <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-pink-500 scrollbar-track-transparent hover:scrollbar-thumb-pink-600">
+              {projects.map((project) => (
+                <div
+                  key={project.title}
+                  className={`group relative overflow-hidden rounded-xl backdrop-blur-sm border transition-all duration-300 flex-shrink-0 w-[350px] sm:w-[400px] snap-center ${isDarkMode
+                    ? 'bg-gradient-to-br from-slate-800/50 to-slate-700/50 border-white/10 hover:border-pink-500/50'
+                    : 'bg-gradient-to-br from-white/50 to-gray-50/50 border-gray-200 hover:border-pink-400/50'
+                    }`}
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
-                  <div className="flex gap-3">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center font-medium hover:underline ${isDarkMode
-                        ? 'text-pink-400 hover:text-pink-300'
-                        : 'text-pink-600 hover:text-pink-500'
-                      }`}
-                    >
-                      <Github className="mr-1 w-4 h-4" />
-                      Code
-                    </a>
-                    {project.liveLink && project.liveLink !== '#' && (
+                  <div className="p-6">
+                    <h3 className={`font-semibold text-xl mb-2 transition-colors ${isDarkMode
+                      ? 'group-hover:text-pink-400'
+                      : 'group-hover:text-pink-600'
+                      }`}>
+                      {project.title}
+                    </h3>
+                    <p className={`text-sm mb-4 leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                      }`}>
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${isDarkMode
+                            ? 'bg-pink-600/20 text-pink-300'
+                            : 'bg-pink-100 text-pink-700'
+                            }`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3">
                       <a
-                        href={project.liveLink}
+                        href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`inline-flex items-center font-medium hover:underline ${isDarkMode
@@ -779,14 +776,28 @@ function App() {
                           : 'text-pink-600 hover:text-pink-500'
                         }`}
                       >
-                        <ExternalLink className="mr-1 w-4 h-4" />
-                        Live Demo
+                        <Github className="mr-1 w-4 h-4" />
+                        Code
                       </a>
-                    )}
+                      {project.liveLink && project.liveLink !== '#' && (
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center font-medium hover:underline ${isDarkMode
+                            ? 'text-pink-400 hover:text-pink-300'
+                            : 'text-pink-600 hover:text-pink-500'
+                          }`}
+                        >
+                          <ExternalLink className="mr-1 w-4 h-4" />
+                          Live Demo
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
