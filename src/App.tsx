@@ -84,7 +84,7 @@ function App() {
   const downloadResume = () => {
     const link = document.createElement('a');
     link.href = '/Resume.pdf';
-    link.download = 'RohitKumarCV.pdf';
+    link.download = 'Rohit Kumar Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
